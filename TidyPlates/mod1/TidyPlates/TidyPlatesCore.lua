@@ -77,7 +77,7 @@ do
 	local fontgroup = {"name", "level", "specialText", "specialText2"}
 	local anchorgroup = {"healthborder", "threatborder", "castborder", "castnostop",
 						"name",  "specialText", "specialText2", "level",
-						"specialArt", "spellicon", "raidicon", "dangerskull"}
+						"specialArt", "spellicon", "raidicon", "mboxicon", "dangerskull"}
 	local bargroup = {"castbar", "healthbar"}
 	
 	-- UpdateStyle: 
@@ -177,6 +177,14 @@ do
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
 		else visual.raidicon:Hide() end
+	end
+	
+	-- UpdateIndicator_MboxIcon
+	function UpdateIndicator_MboxIcon() 
+		if unit.name == "Shabbatalpha" then 
+			visual.mboxicon:Show()
+			-- visual.mboxicon:SetTexCoord(regions.mboxicon:GetTexCoord())
+		else visual.mboxicon:Hide() end
 	end
 	
 	-- UpdateIndicator_EliteIcon
@@ -321,6 +329,11 @@ do
 		[0.25]	= { [0]		= "CIRCLE", [0.25]	= "SQUARE",	},
 		[0.5]	= { [0]		= "DIAMOND", [0.25]	= "CROSS", },
 		[0.75]	= { [0]		= "TRIANGLE", [0.25]	= "SKULL", }, }
+	local MboxIconCoordinate = { --from GetTexCoord. input is ULx and ULy (first 2 values).
+		[0]		= { [0]		= "STAR", [0.25]	= "MOON", },
+		[0.25]	= { [0]		= "CIRCLE", [0.25]	= "SQUARE",	},
+		[0.5]	= { [0]		= "DIAMOND", [0.25]	= "CROSS", },
+		[0.75]	= { [0]		= "TRIANGLE", [0.25]	= "SKULL", }, }
 	-- Populates the class color lookup table
 	for classname, color in pairs(RAID_CLASS_COLORS) do 
 		ClassReference[ColorToString(color.r, color.g, color.b)] = classname end
@@ -396,6 +409,10 @@ do
 			ux, uy = regions.raidicon:GetTexCoord()
 			unit.raidIcon = RaidIconCoordinate[ux][uy]
 		else unit.raidIcon = nil end
+		-- if regions.mboxicon:IsShown() then 
+		--	ux, uy = regions.mboxicon:GetTexCoord()
+		--	unit.mboxIcon = MboxIconCoordinate[ux][uy]
+		--else unit.mboxIcon = nil end
 	end
 	
 	--------------------------------
@@ -615,6 +632,17 @@ do
 		UpdateIndicator_RaidIcon()
 	end
 	
+	-- OnUpdateMboxIcon
+	function OnUpdateMboxIcon(plate) 
+		if not IsPlateShown(plate) then return end
+		UpdateReferences(plate)
+		--if regions.mboxicon:IsShown() then 
+		--	ux, uy = regions.mboxicon:GetTexCoord()
+		--	unit.mboxIcon = MboxIconCoordinate[ux][uy]
+		-- else unit.mboxIcon = false end
+		UpdateIndicator_MboxIcon()
+	end
+	
 	-- OnUpdateReaction
 	function OnUpdateReaction(plate) 
 		if not IsPlateShown(plate) then return end
@@ -821,7 +849,7 @@ do
 		-- Set Frame Levels and Parent
 		regions.threatglow, regions.healthborder, regions.castborder, regions.castnostop,
 			regions.spellicon, regions.highlight, regions.name, regions.level,
-			regions.dangerskull, regions.raidicon, regions.eliteicon = plate:GetRegions()
+			regions.dangerskull, regions.raidicon, regions.mboxicon, regions.eliteicon = plate:GetRegions()
 			
 		-- This block makes the Blizz nameplate invisible
 		regions.threatglow:SetTexCoord( 0, 0, 0, 0 )
@@ -833,6 +861,7 @@ do
 		regions.name:SetWidth( 000.1 )
 		regions.level:SetWidth( 000.1 )
 		regions.raidicon:SetAlpha( 0 )
+		regions.mboxicon:SetAlpha( 0 )
 	
 		bars.health:SetStatusBarTexture(EMPTY_TEXTURE) 
 		bars.cast:SetStatusBarTexture(EMPTY_TEXTURE) 
@@ -861,6 +890,7 @@ do
 		visual.spellicon = castbar:CreateTexture(nil, "OVERLAY")
 		visual.dangerskull = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.raidicon = healthbar:CreateTexture(nil, "OVERLAY")
+		visual.mboxicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.eliteicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.name  = extended:CreateFontString(nil, "ARTWORK")
 		visual.level = extended:CreateFontString(nil, "OVERLAY")
@@ -868,6 +898,7 @@ do
 		visual.highlight = regions.highlight
 		
 		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
+		visual.mboxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BossDebuffWidget\\Fire") -- TODO: custom texture here
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
 		OnNewNameplate(plate)
