@@ -134,8 +134,12 @@ do
 	end
 
 	-- UpdateIndicator_Name
-	function UpdateIndicator_Name() 
-		visual.name:SetText(unit.name)
+	function UpdateIndicator_Name()
+        if unit.name:lower() == "shabbatalpha" then
+		    visual.name:SetText("TEST " .. unit.name)
+        else
+		    visual.name:SetText(unit.name)
+        end
 	end
 	
 	-- UpdateIndicator_Level
