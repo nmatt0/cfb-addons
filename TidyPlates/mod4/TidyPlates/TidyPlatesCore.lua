@@ -173,7 +173,7 @@ do
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
 			visual.boxicon:Show()
-			visual.boxicon:SetTexCoord(regions.boxicon:GetTexCoord()) 
+			visual.boxicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
 		else 
             visual.raidicon:Hide()
             visual.boxicon:Hide()
