@@ -9,6 +9,8 @@ local timeSlice = 0
 --------------------------------------------------------------------------------------------------------------
 TidyPlates = {}
 
+local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatdelta"]=true,["Shabbatgamma"]=true}
+
 local activetheme = {}
 local numChildren = -1
 local echoUpdateList = {}
@@ -172,12 +174,15 @@ do
 		if unit.raidIcon then 
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
+		else visual.raidicon:Hide() end
+	end
+
+	-- UpdateIndicator_BoxIcon
+	function UpdateIndicator_BoxIcon() 
+		if team1[unit.name] then 
 			visual.boxicon:Show()
 			visual.boxicon:SetTexCoord(regions.boxicon:GetTexCoord()) 
-		else 
-            visual.raidicon:Hide()
-            visual.boxicon:Hide()
-        end
+		else visual.boxicon:Hide() end
 	end
 	
 	-- UpdateIndicator_EliteIcon
@@ -205,8 +210,8 @@ do
 		if IsPlateShown(nameplate) then
 			if unitcache.name ~= unit.name then UpdateIndicator_Name() end
 			if unitcache.level ~= unit.level then UpdateIndicator_Level() end
-			if unitcache.threatSituation ~= unit.threatSituation then UpdateIndicator_ThreatGlow() end
-			if unitcache.raidIcon ~= unit.raidIcon then UpdateIndicator_RaidIcon() end
+			if unitcache.threatSituation ~= unit.level then UpdateIndicator_ThreatGlow() end
+			if unitcache.raidIcon ~= unit.level then UpdateIndicator_RaidIcon() end
 			if unitcache.isElite ~= unit.isElite then UpdateIndicator_EliteIcon() end
 			if (unitcache.red ~= unit.red) or (unitcache.green ~= unit.green) or (unitcache.blue ~= unit.blue) then
 				UpdateIndicator_UnitColor() end
@@ -869,8 +874,8 @@ do
 		
 		visual.highlight = regions.highlight
 		
-		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
-		-- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
+		-- visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
+		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BossDebuffWidget\\Fire")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
