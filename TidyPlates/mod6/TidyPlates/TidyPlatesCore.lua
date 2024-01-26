@@ -15,6 +15,9 @@ local team3 = {["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Suren
 local teamtest = {["Orgrimmar Grunt"]=true}
 
 local otto = {["Ottomanzz"]=true,["Ottomanl"]=true,["Ottomanm"]=true,["Ottomano"]=true,["Ottomanp"]=true}
+local elegant = {["Elegant"]=true,["Eleganto"]=true,["Elegantz"]=true,["Eleganti"]=true,["Elegants"]=true,["Elegantb"]=true,["Elegantc"]=true,["Elegantd"]=true,["Eleganta"]=true}
+
+It’s Elegant, Eleganto, Elegantz, Eleganti, Elegants, Elegantb, Elegantc, Elegantd, Eleganta
 
 local gantz = {["Archvil"]=true,["Davos"]=true,["Vitra"]=true,["Leiazel"]=true,["Dimitrecus"]=true,["Fabregat"]=true,["Broumie"]=true,["Jovile"]=true,["Icebanne"]=true,["Dreina"]=true,["Aronsson"]=true,["Centellita"]=true,["Demetria"]=true,["Lacastigada"]=true,["Belishx"]=true,["Arcous"]=true,["Haiineko"]=true,["Reyinmortal"]=true,["Adamuz"]=true,["Darliux"]=true,["Dalumian"]=true,["Valkirya"]=true,["Perrohp"]=true,["Thegenerall"]=true,["Oddinkk"]=true,["Skankhuntx"]=true,["Darlenk"]=true,["Ekka"]=true,["Justiciera"]=true,["Nouribasha"]=true,["Devilkspree"]=true,["Illidanst"]=true,["Kythel"]=true,["Nourito"]=true,["Shester"]=true,["Brakusramms"]=true,["Palangano"]=true,["Akaito"]=true,["Xelshield"]=true,["Xios"]=true,["Rosellie"]=true,["Aelyss"]=true,["Amarantta"]=true,["Alexiia"]=true,["Karmina"]=true,["Mamaid"]=true,["Nefereth"]=true,["Niurka"]=true,["Niiurka"]=true,["Mortyss"]=true,["Healshamy"]=true,["Drucilaa"]=true,["Bryaxis"]=true,["Lilynete"]=true,["Puralocura"]=true,["Nosoymotaro"]=true,["Salleosmacro"]=true,["Cuecha"]=true,["Craquen"]=true,["Elau"]=true,["Udriell"]=true,["Soifong"]=true,["Ianthe"]=true,["Lacastigadaa"]=true,["Terryonx"]=true,["Annifer"]=true,["Candrael"]=true,["Daementia"]=true,["Xiios"]=true,["Xyelt"]=true,["Yunet"]=true,["Edufeinmann"]=true,["Alicate"]=true,["Akaite"]=true,["Qymera"]=true,["Vascor"]=true,["Provedora"]=true,["Lansus"]=true,["Treexxy"]=true,["Kioba"]=true,["Alexbjorn"]=true,["Drelock"]=true,["Nostro"]=true,["Kierath"]=true,["Bulkz"]=true,["Echydnas"]=true,["Litx"]=true,["Elysumprn"]=true,["Goldbanne"]=true,["Anihilation"]=true,["Lauwu"]=true,["Icebane"]=true,["Crazychaman"]=true,["Raffu"]=true,["Lianlii"]=true,["Dalu"]=true,["Ghostskull"]=true,["Xelshieldk"]=true,["Dampier"]=true,["Motaro"]=true,["Xllmerliinll"]=true,["Diosbanne"]=true,["Albedowr"]=true,["Damamuerte"]=true,["Shadowkillz"]=true,["Falconii"]=true,["Altamirano"]=true,["Elcoba"]=true,["Xelshieldsc"]=true,["Luminatis"]=true,["Elbroncass"]=true,["Renatazz"]=true,["Valtazar"]=true,["Consttantin"]=true,["Netanol"]=true,["Bloodofwar"]=true,["Barhus"]=true,["Itachiq"]=true,["Vandhijk"]=true,["Lilylou"]=true,["Doraemom"]=true,["Amabliitz"]=true,["Reaxion"]=true,["Icebanee"]=true,["Icebaane"]=true}
 
@@ -208,6 +211,9 @@ do
 			visual.boxicon:Show()
         elseif wicked[unit.name] then 
             visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\cow")
+			visual.boxicon:Show()
+        elseif elegant[unit.name] then 
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\elegant")
 			visual.boxicon:Show()
 		else visual.boxicon:Hide() end
 	end
