@@ -10,7 +10,10 @@ local timeSlice = 0
 TidyPlates = {}
 
 local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}
-local team2 = {["Orgrimmar Grunt"]=true}
+local team2 = {["Zahd"]=true,["Harz"]=true,["Grunbeld"]=true,["Undeth"]=true,["Delts"]=true}
+local team3 = {["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true}
+local teamtest = {["Orgrimmar Grunt"]=true}
+local gantz = {["Archvil"]=true,["Davos"]=true,["Vitra"]=true,["Centellita"]=true,["Ekka"]=true,["Nouribasha"]=true,["Kythel"]=true,["Dampier"]=true,["Motaro"]=true,["Leiazel"]=true,["Dimitrecus"]=true,["Fabregat"]=true,["Broumie"]=true,["Jovile"]=true,["Icebanne"]=true,["Dreina"]=true,["Aronsson"]=true,["Nouribasha"]=true}
 
 local activetheme = {}
 local numChildren = -1
@@ -184,7 +187,16 @@ do
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Diamond")
 			visual.boxicon:Show()
         elseif team2[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\Elegant")
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
+			visual.boxicon:Show()
+        elseif team3[unit.name] then 
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Circle")
+			visual.boxicon:Show()
+        elseif teamtest[unit.name] then 
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\burrito")
+			visual.boxicon:Show()
+        elseif gantz[unit.name] then 
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\burrito")
 			visual.boxicon:Show()
 		else visual.boxicon:Hide() end
 	end
