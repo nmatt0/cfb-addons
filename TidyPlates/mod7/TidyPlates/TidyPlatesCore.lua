@@ -11,7 +11,6 @@ TidyPlates = {}
 
 local raidIconMap = {["STAR"]="1",["CIRCLE"]="2",["DIAMOND"]="3",["TRIANGLE"]="4",["MOON"]="5",["SQUARE"]="6",["CROSS"]="7",["SKULL"]="8"}
 local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}
-local team1raidIcon = nil
 local team2 = {["Zahd"]=true,["Harz"]=true,["Grunbeld"]=true,["Undeth"]=true,["Delts"]=true}
 local team3 = {["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true}
 local teamtest = {["Orgrimmar Grunt"]=true}
@@ -180,28 +179,21 @@ do
 			else threatborder:Hide() end
 		end
 	end
-
-    -- TODO
+	
 	-- UpdateIndicator_RaidIcon
 	function UpdateIndicator_RaidIcon() 
 		if unit.raidIcon then 
 			visual.raidicon:Show()
-			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord())
-            -- if unit.name == "Shabbat" then
-            --     team1raidIcon = unit.raidIcon
-            -- end
+			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
 		else visual.raidicon:Hide() end
 	end
 
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
 		if team1[unit.name] then 
-            if 1 == 1 then
-                -- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. raidIconMap[team1raidIcon])
-                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
-            end
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
 			visual.boxicon:Show()
-        if team2[unit.name] then 
+        elseif team2[unit.name] then 
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_2")
 			visual.boxicon:Show()
         elseif team3[unit.name] then 
