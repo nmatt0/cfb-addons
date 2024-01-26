@@ -204,7 +204,8 @@ do
 	function UpdateIndicator_BoxIcon() 
 		if team1[unit.name] then 
             if team1raidIcon then
-                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. raidIconMap[team1raidIcon])
+                -- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. raidIconMap[team1raidIcon])
+                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
             end
 			visual.boxicon:Show()
         if team2[unit.name] then 
