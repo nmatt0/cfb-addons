@@ -622,6 +622,16 @@ do
 		UpdateIndicator_RaidIcon()
 	end
 	
+	-- OnUpdateBoxIcon
+	function OnUpdateBoxIcon(plate) 
+		if not IsPlateShown(plate) then return end
+		UpdateReferences(plate)
+		if regions.boxicon:IsShown() then 
+			unit.boxIcon = true
+		else unit.raidIcon = false end
+		UpdateIndicator_BoxIcon()
+	end
+	
 	-- OnUpdateReaction
 	function OnUpdateReaction(plate) 
 		if not IsPlateShown(plate) then return end
