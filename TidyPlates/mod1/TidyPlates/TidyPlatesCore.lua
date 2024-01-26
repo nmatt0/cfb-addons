@@ -177,7 +177,7 @@ do
 	
 	-- UpdateIndicator_RaidIcon2
 	function UpdateIndicator_RaidIcon2() 
-		if unit.raidIcon2 then 
+		if unit.raidIcon then 
 			visual.raidicon2:Show()
 			visual.raidicon2:SetTexCoord(regions.raidicon2:GetTexCoord()) 
 		else visual.raidicon2:Hide() end
@@ -410,8 +410,8 @@ do
 
 		if regions.raidicon2:IsShown() then 
 			ux, uy = regions.raidicon2:GetTexCoord()
-			unit.raidIcon2 = RaidIcon2Coordinate[ux][uy]
-		else unit.raidIcon2 = nil end
+			unit.raidIcon = RaidIcon2Coordinate[ux][uy]
+		else unit.raidIcon = nil end
 	end
 	
 	--------------------------------
@@ -637,8 +637,8 @@ do
 		UpdateReferences(plate)
 		if regions.raidicon2:IsShown() then 
 			ux, uy = regions.raidicon2:GetTexCoord()
-			unit.raidIcon2 = RaidIconCoordinate2[ux][uy]
-		else unit.raidIcon2 = false end
+			unit.raidIcon = RaidIconCoordinate2[ux][uy]
+		else unit.raidIcon = false end
 		-- unit.isMarked = regions.raidicon:IsShown()
 		UpdateIndicator_RaidIcon2()
 	end
