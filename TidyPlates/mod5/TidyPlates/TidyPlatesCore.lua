@@ -334,7 +334,7 @@ do
 		[0.75]	= { [0]		= "TRIANGLE", [0.25]	= "SKULL", }, }
 	-- Populates the class color lookup table
 	for classname, color in pairs(RAID_CLASS_COLORS) do 
-		ClassReference[ColorToString(0.77, 0.12, 0.23)] = classname end
+		ClassReference[ColorToString(color.r, color.g, color.b)] = classname end
 	
 	--------------------------------
 	-- Mass Gather Functions

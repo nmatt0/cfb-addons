@@ -58,17 +58,21 @@ end
 
 
 local function HealthColorDelegate(unit)	
-	if  LocalVars.AggroHealth then
-		if InCombatLockdown() and unit.reaction ~= "FRIENDLY" and unit.type == "NPC" then
-			local danger, safe = LocalVars.AggroDangerColor, LocalVars.AggroSafeColor
-			if unit.threatSituation ~= "LOW" then return danger.r, danger.g, danger.b
-				else return safe.r, safe.g, safe.b end 
-			end
-	end
-    --if unit.reaction ~= "FRIENDLY" and unit.type == "PLAYER" then
-    --    return 0.77, 0.12, 0.23
-    --end
+    if unit.reaction ~= "FRIENDLY" and unit.type == "PLAYER" then
+        return 0.77, 0.12, 0.23
+    end
     return unit.red, unit.green, unit,blue
+	-- if  LocalVars.AggroHealth then
+	-- 	if InCombatLockdown() and unit.reaction ~= "FRIENDLY" and unit.type == "NPC" then
+	-- 		local danger, safe = LocalVars.AggroDangerColor, LocalVars.AggroSafeColor
+	-- 		if unit.threatSituation ~= "LOW" then return danger.r, danger.g, danger.b
+	-- 			else return safe.r, safe.g, safe.b end 
+	-- 		end
+	-- end
+    -- --if unit.reaction ~= "FRIENDLY" and unit.type == "PLAYER" then
+    -- --    return 0.77, 0.12, 0.23
+    -- --end
+    -- return unit.red, unit.green, unit,blue
 end
 
 ---------------
