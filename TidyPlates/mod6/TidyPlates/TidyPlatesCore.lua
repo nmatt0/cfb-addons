@@ -184,13 +184,13 @@ do
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
 		if team1[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_Circle")
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
 			visual.boxicon:Show()
         elseif team2[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_Skull")
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_2")
 			visual.boxicon:Show()
         elseif team3[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_Diamond")
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_3")
 			visual.boxicon:Show()
         elseif teamtest[unit.name] then 
             visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\taco")
