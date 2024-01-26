@@ -158,7 +158,7 @@ theme.boxicon = {
 	width = 30,
 	height = 30,
 	x = 35,
-	y = 24+nameplate_verticalOffset,
+	y = 30+nameplate_verticalOffset,
 	anchor = "TOP",
 }
 
