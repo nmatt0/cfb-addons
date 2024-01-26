@@ -172,7 +172,12 @@ do
 		if unit.raidIcon then 
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
-		else visual.raidicon:Hide() end
+			visual.boxicon:Show()
+			visual.boxicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
+		else 
+            visual.raidicon:Hide()
+            visual.boxicon:Hide()
+        end
 	end
 	
 	-- UpdateIndicator_EliteIcon
