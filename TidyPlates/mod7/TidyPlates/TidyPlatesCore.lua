@@ -184,6 +184,9 @@ do
 	-- UpdateIndicator_RaidIcon
 	function UpdateIndicator_RaidIcon() 
 		if unit.raidIcon then 
+            if unit.name == "Shabbat" then
+                unit.name = unit.raidIcon .. " " .. unit.name
+            end
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
 		else visual.raidicon:Hide() end
