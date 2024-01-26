@@ -840,7 +840,6 @@ do
 		regions.name:SetWidth( 000.1 )
 		regions.level:SetWidth( 000.1 )
 		regions.raidicon:SetAlpha( 0 )
-		regions.boxicon:SetAlpha( 0 )
 	
 		bars.health:SetStatusBarTexture(EMPTY_TEXTURE) 
 		bars.cast:SetStatusBarTexture(EMPTY_TEXTURE) 
