@@ -180,13 +180,6 @@ do
 			else threatborder:Hide() end
 		end
 	end
-	
-    function getRaidIconNumber(iconstr)
-        if iconstr == "STAR" then
-        elseif iconstr == "CIRCLE" then
-        
-        end
-    end
 
     -- TODO
 	-- UpdateIndicator_RaidIcon
