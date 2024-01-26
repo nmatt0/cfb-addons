@@ -9,7 +9,7 @@ local timeSlice = 0
 --------------------------------------------------------------------------------------------------------------
 TidyPlates = {}
 
-local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatdelta"]=true,["Shabbatgamma"]=true}
+local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}
 
 local activetheme = {}
 local numChildren = -1
@@ -840,6 +840,7 @@ do
 		regions.name:SetWidth( 000.1 )
 		regions.level:SetWidth( 000.1 )
 		regions.raidicon:SetAlpha( 0 )
+		regions.boxicon:SetAlpha( 0 )
 	
 		bars.health:SetStatusBarTexture(EMPTY_TEXTURE) 
 		bars.cast:SetStatusBarTexture(EMPTY_TEXTURE) 

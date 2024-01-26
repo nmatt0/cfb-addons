@@ -155,8 +155,8 @@ theme.raidicon = {
 }
 
 theme.boxicon = {
-	width = 20,
-	height = 20,
+	width = 30,
+	height = 30,
 	x = 35,
 	y = 12+nameplate_verticalOffset,
 	anchor = "TOP",
