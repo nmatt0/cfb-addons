@@ -14,6 +14,7 @@ local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Sha
 local team2 = {["Zahd"]=true,["Harz"]=true,["Grunbeld"]=true,["Undeth"]=true,["Delts"]=true}
 local team3 = {["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true}
 local teamtest = {["Orgrimmar Grunt"]=true}
+local team1raidIcon = nil
 
 local otto = {["Ottomanzz"]=true,["Ottomanl"]=true,["Ottomanm"]=true,["Ottomano"]=true,["Ottomanp"]=true}
 local elegant = {["Elegant"]=true,["Eleganto"]=true,["Elegantz"]=true,["Eleganti"]=true,["Elegants"]=true,["Elegantb"]=true,["Elegantc"]=true,["Elegantd"]=true,["Eleganta"]=true}
