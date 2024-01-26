@@ -138,12 +138,6 @@ do
 	-- UpdateIndicator_Name
 	function UpdateIndicator_Name() 
 		visual.name:SetText(unit.name)
-		if team1[unit.name] then
-            unit.boxicon = true
-        else
-            unit.boxicon = false
-        end
-        
 	end
 	
 	-- UpdateIndicator_Level
@@ -185,9 +179,8 @@ do
 
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
-		if unit.boxicon then 
+		if team1[unit.name] then 
 			visual.boxicon:Show()
-			visual.boxicon:SetTexCoord(regions.boxicon:GetTexCoord()) 
 		else visual.boxicon:Hide() end
 	end
 	
