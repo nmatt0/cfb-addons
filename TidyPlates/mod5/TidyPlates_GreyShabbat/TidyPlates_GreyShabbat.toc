@@ -1,7 +1,7 @@
 ## Interface: 30300
-## Title: Tidy Plates: Grey Theme
+## Title: Tidy Plates: Grey Theme (Shabbat Mod)
 ## Notes: Tidy Plates' Bundled Theme.  Use apostrophes wisely. 
-## Author: Binny the Love Fool
+## Author: Binny the Love Fool + Shabbat
 ## Dependencies: TidyPlates
 ## SavedVariablesPerCharacter: TidyPlatesGreyTankSavedVariables,TidyPlatesGreyDPSSavedVariables
 
