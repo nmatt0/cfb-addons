@@ -61,7 +61,7 @@ local function HealthColorDelegate(unit)
     if unit.reaction ~= "FRIENDLY"then
         return 0.77, 0.12, 0.23 -- RED
     elseif unit.reaction == "FRIENDLY" and unit.type == "PLAYER" then
-        return 0, 0.388, 0.78 -- BLUE
+        return 0, 0.314, 0.631 -- BLUE
     else
         return 0.00, 1.00, 0.60 -- GREEN
     end
