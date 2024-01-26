@@ -77,7 +77,7 @@ do
 	local fontgroup = {"name", "level", "specialText", "specialText2"}
 	local anchorgroup = {"healthborder", "threatborder", "castborder", "castnostop",
 						"name",  "specialText", "specialText2", "level",
-						"specialArt", "spellicon", "raidicon", "boxicon", "dangerskull"}
+						"specialArt", "spellicon", "raidicon", "dangerskull"}
 	local bargroup = {"castbar", "healthbar"}
 	
 	-- UpdateStyle: 
@@ -857,6 +857,7 @@ do
 		visual.spellicon = castbar:CreateTexture(nil, "OVERLAY")
 		visual.dangerskull = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.raidicon = healthbar:CreateTexture(nil, "OVERLAY")
+		visual.boxicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.eliteicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.name  = extended:CreateFontString(nil, "ARTWORK")
 		visual.level = extended:CreateFontString(nil, "OVERLAY")
@@ -864,6 +865,7 @@ do
 		visual.highlight = regions.highlight
 		
 		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
+		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
 		OnNewNameplate(plate)
