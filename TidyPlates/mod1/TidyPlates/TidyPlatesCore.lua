@@ -870,7 +870,7 @@ do
 		visual.highlight = regions.highlight
 		
 		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
-		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
+		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
 		OnNewNameplate(plate)
