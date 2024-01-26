@@ -187,16 +187,16 @@ do
 		if unit.raidIcon then 
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord())
-            if unit.name == "Shabbat" then
-                team1raidIcon = unit.raidIcon
-            end
+            -- if unit.name == "Shabbat" then
+            --     team1raidIcon = unit.raidIcon
+            -- end
 		else visual.raidicon:Hide() end
 	end
 
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
 		if team1[unit.name] then 
-            if team1raidIcon then
+            if 1 == 1 then
                 -- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. raidIconMap[team1raidIcon])
                 visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
             end
