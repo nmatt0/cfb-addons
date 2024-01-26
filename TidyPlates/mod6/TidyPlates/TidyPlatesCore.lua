@@ -193,10 +193,10 @@ do
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Circle")
 			visual.boxicon:Show()
         elseif teamtest[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\burrito")
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\taco")
 			visual.boxicon:Show()
         elseif gantz[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\burrito")
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\taco")
 			visual.boxicon:Show()
 		else visual.boxicon:Hide() end
 	end
