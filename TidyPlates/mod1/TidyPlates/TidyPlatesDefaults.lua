@@ -154,6 +154,14 @@ theme.raidicon = {
 	anchor = "TOP",
 }
 
+theme.raidicon2 = {
+	width = 20,
+	height = 20,
+	x = 35,
+	y = 12+nameplate_verticalOffset,
+	anchor = "TOP",
+}
+
 theme.dangerskull = {
 	width = 14,
 	height = 14,

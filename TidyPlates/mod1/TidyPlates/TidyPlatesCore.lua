@@ -77,7 +77,7 @@ do
 	local fontgroup = {"name", "level", "specialText", "specialText2"}
 	local anchorgroup = {"healthborder", "threatborder", "castborder", "castnostop",
 						"name",  "specialText", "specialText2", "level",
-						"specialArt", "spellicon", "raidicon", "dangerskull"}
+						"specialArt", "spellicon", "raidicon", "raidicon2", "dangerskull"}
 	local bargroup = {"castbar", "healthbar"}
 	
 	-- UpdateStyle: 
@@ -111,7 +111,7 @@ end
 -- IV. Indicators: These functions update the actual data shown on the graphical objects
 --------------------------------------------------------------------------------------------------------------
 local UpdateIndicator_CustomScaleText, UpdateIndicator_HealthBar, UpdateIndicator_Standard, UpdateIndicator_All, UpdateIndicator_CustomAlpha
-local UpdateIndicator_Level, UpdateIndicator_ThreatGlow, UpdateIndicator_RaidIcon, UpdateIndicator_EliteIcon, UpdateIndicator_UnitColor, UpdateIndicator_Name
+local UpdateIndicator_Level, UpdateIndicator_ThreatGlow, UpdateIndicator_RaidIcon, UpdateIndicator_RaidIcon2, UpdateIndicator_EliteIcon, UpdateIndicator_UnitColor, UpdateIndicator_Name
 do
 	local color = {}
 	local threatborder, alpha, forcealpha, scale
@@ -175,6 +175,14 @@ do
 		else visual.raidicon:Hide() end
 	end
 	
+	-- UpdateIndicator_RaidIcon2
+	function UpdateIndicator_RaidIcon2() 
+		if unit.raidIcon2 then 
+			visual.raidicon2:Show()
+			visual.raidicon2:SetTexCoord(regions.raidicon2:GetTexCoord()) 
+		else visual.raidicon2:Hide() end
+	end
+	
 	-- UpdateIndicator_EliteIcon
 	function UpdateIndicator_EliteIcon() 
 		
@@ -202,6 +210,7 @@ do
 			if unitcache.level ~= unit.level then UpdateIndicator_Level() end
 			if unitcache.threatSituation ~= unit.level then UpdateIndicator_ThreatGlow() end
 			if unitcache.raidIcon ~= unit.level then UpdateIndicator_RaidIcon() end
+			if unitcache.raidIcon2 ~= unit.level then UpdateIndicator_RaidIcon2() end
 			if unitcache.isElite ~= unit.isElite then UpdateIndicator_EliteIcon() end
 			if (unitcache.red ~= unit.red) or (unitcache.green ~= unit.green) or (unitcache.blue ~= unit.blue) then
 				UpdateIndicator_UnitColor() end
@@ -260,7 +269,7 @@ local OnNewNameplate, OnShowNameplate, OnHideNameplate, OnUpdateNameplate, OnRes
 local OnStartCast, OnStopCast, OnUpdateCast
 local OnCombatEventCastbar
 local OnMouseoverNameplate, OnLeaveNameplate
-local OnUpdateHealth, OnUpdateLevel, OnUpdateThreatSituation, OnUpdateRaidIcon
+local OnUpdateHealth, OnUpdateLevel, OnUpdateThreatSituation, OnUpdateRaidIcon, OnUpdateRaidIcon2
 local ShowSpellFromGUID
 do
 	--------------------------------
@@ -313,6 +322,12 @@ do
 	--
 	local ux, uy
 	local RaidIconCoordinate = { --from GetTexCoord. input is ULx and ULy (first 2 values).
+		[0]		= { [0]		= "STAR", [0.25]	= "MOON", },
+		[0.25]	= { [0]		= "CIRCLE", [0.25]	= "SQUARE",	},
+		[0.5]	= { [0]		= "DIAMOND", [0.25]	= "CROSS", },
+		[0.75]	= { [0]		= "TRIANGLE", [0.25]	= "SKULL", }, }
+
+	local RaidIcon2Coordinate = { --from GetTexCoord. input is ULx and ULy (first 2 values).
 		[0]		= { [0]		= "STAR", [0.25]	= "MOON", },
 		[0.25]	= { [0]		= "CIRCLE", [0.25]	= "SQUARE",	},
 		[0.5]	= { [0]		= "DIAMOND", [0.25]	= "CROSS", },
@@ -392,6 +407,11 @@ do
 			ux, uy = regions.raidicon:GetTexCoord()
 			unit.raidIcon = RaidIconCoordinate[ux][uy]
 		else unit.raidIcon = nil end
+
+		if regions.raidicon2:IsShown() then 
+			ux, uy = regions.raidicon2:GetTexCoord()
+			unit.raidIcon2 = RaidIcon2Coordinate[ux][uy]
+		else unit.raidIcon2 = nil end
 	end
 	
 	--------------------------------
@@ -611,6 +631,18 @@ do
 		UpdateIndicator_RaidIcon()
 	end
 	
+	-- OnUpdateRaidIcon2
+	function OnUpdateRaidIcon2(plate) 
+		if not IsPlateShown(plate) then return end
+		UpdateReferences(plate)
+		if regions.raidicon2:IsShown() then 
+			ux, uy = regions.raidicon2:GetTexCoord()
+			unit.raidIcon2 = RaidIconCoordinate2[ux][uy]
+		else unit.raidIcon2 = false end
+		-- unit.isMarked = regions.raidicon:IsShown()
+		UpdateIndicator_RaidIcon2()
+	end
+	
 	-- OnUpdateReaction
 	function OnUpdateReaction(plate) 
 		if not IsPlateShown(plate) then return end
@@ -817,7 +849,7 @@ do
 		-- Set Frame Levels and Parent
 		regions.threatglow, regions.healthborder, regions.castborder, regions.castnostop,
 			regions.spellicon, regions.highlight, regions.name, regions.level,
-			regions.dangerskull, regions.raidicon, regions.eliteicon = plate:GetRegions()
+			regions.dangerskull, regions.raidicon, regions.raidicon2, regions.eliteicon = plate:GetRegions()
 			
 		-- This block makes the Blizz nameplate invisible
 		regions.threatglow:SetTexCoord( 0, 0, 0, 0 )
@@ -829,6 +861,7 @@ do
 		regions.name:SetWidth( 000.1 )
 		regions.level:SetWidth( 000.1 )
 		regions.raidicon:SetAlpha( 0 )
+		regions.raidicon2:SetAlpha( 0 )
 	
 		bars.health:SetStatusBarTexture(EMPTY_TEXTURE) 
 		bars.cast:SetStatusBarTexture(EMPTY_TEXTURE) 
@@ -857,6 +890,7 @@ do
 		visual.spellicon = castbar:CreateTexture(nil, "OVERLAY")
 		visual.dangerskull = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.raidicon = healthbar:CreateTexture(nil, "OVERLAY")
+		visual.raidicon2 = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.eliteicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.name  = extended:CreateFontString(nil, "ARTWORK")
 		visual.level = extended:CreateFontString(nil, "OVERLAY")
@@ -864,6 +898,7 @@ do
 		visual.highlight = regions.highlight
 		
 		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
+		visual.raidicon2:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
 		OnNewNameplate(plate)
@@ -998,6 +1033,7 @@ do
 	end
 
 	function events:RAID_TARGET_UPDATE() ForEachPlate(OnUpdateRaidIcon) end
+	function events:RAID_TARGET_UPDATE() ForEachPlate(OnUpdateRaidIcon2) end
 	function events:UNIT_THREAT_SITUATION_UPDATE() SetEchoUpdate(OnUpdateThreatSituation); end
 
 	function events:UNIT_LEVEL() ForEachPlate(OnUpdateLevel) end
