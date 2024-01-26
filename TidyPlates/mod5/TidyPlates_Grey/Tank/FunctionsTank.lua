@@ -1,6 +1,6 @@
 local WidgetLib = TidyPlatesWidgets
-local LocalVars = TidyPlatesGreyDPSVariables
-local theme = TidyPlatesThemeList["Grey/DPS"]
+local LocalVars = TidyPlatesGreyTankVariables
+local theme = TidyPlatesThemeList["Grey/Tank"]
 local valueToString = TidyPlatesUtility.abbrevNumber
 
 ---------------
@@ -30,22 +30,23 @@ local HealthTextFunctions = {
 	function (health, healthmax) return "+"..valueToString(health).." ("..ceil(100*(health/healthmax)).."%) -"..valueToString(healthmax - health) end,
 }
 
-
-local function HealthTextDelegate(unit) return HealthTextFunctions[LocalVars.HealthText](unit.health, unit.healthmax)end
+local function HealthTextDelegate(unit)  
+	return HealthTextFunctions[LocalVars.HealthText](unit.health, unit.healthmax)
+end
 
 ---------------
 -- Graphics Delegates
 ---------------
-local function DpsScale(unit)
-	if InCombatLockdown() and unit.reaction ~= "FRIENDLY" and  unit.threatSituation ~= "LOW" and unit.type == "NPC" then
+local function TankScale(unit)
+	if InCombatLockdown() and unit.reaction == "HOSTILE" and  unit.threatSituation ~= "HIGH" and unit.type == "NPC" then
 		if LocalVars.ScaleIgnoreNonElite then
-			if unit.isElite then return LocalVars.ScaleDanger end
-		else return LocalVars.ScaleDanger end 
+			if unit.isElite then return LocalVars.ScaleLoose end
+		else return LocalVars.ScaleLoose end 
 	end
 	return LocalVars.ScaleGeneral
 end
 	
-local function DpsAlpha(unit)
+local function TankAlpha(unit)
 	if unit.isTarget then return 1
 	else 	
 		if unit.name == "Fanged Pit Viper" then return 0 end
@@ -56,26 +57,20 @@ local function DpsAlpha(unit)
 	end
 end
 
-
 local function HealthColorDelegate(unit)	
 	if  LocalVars.AggroHealth then
 		if InCombatLockdown() and unit.reaction ~= "FRIENDLY" and unit.type == "NPC" then
-			local danger, safe = LocalVars.AggroDangerColor, LocalVars.AggroSafeColor
-			if unit.threatSituation ~= "LOW" then return danger.r, danger.g, danger.b
-				else return safe.r, safe.g, safe.b end 
+			local loose, tanking = LocalVars.AggroLooseColor, LocalVars.AggroTankedColor
+			if unit.threatSituation ~= "HIGH" then return loose.r, loose.g, loose.b
+				else return tanking.r, tanking.g, tanking.b end 
 			end
 	end
-    --if unit.reaction ~= "FRIENDLY" and unit.type == "PLAYER" then
-    --    return 0.77, 0.12, 0.23
-    --end
-    return unit.red, unit.green, unit,blue
+	return unit.red, unit.green, unit.blue
 end
 
 ---------------
 -- Widgets
 ---------------
-
--- Custom Widget
 local function CreateTargetbox(frame)
 	local icon = frame:CreateTexture(nil, 'OVERLAY', frame)
 	icon:SetTexture("Interface\\Addons\\TidyPlates_Grey\\Media\\TargetBox")
@@ -88,32 +83,36 @@ local function CreateTargetbox(frame)
 	return icon
 end
 
--- Init widgets
+
 local function OnInitializeDelegate(plate)
 	-- Tug-o-Threat
 	if LocalVars.WidgetTug then
-		if not plate.widgets.WidgetTug then 		
+		if not plate.widgets.WidgetTug then 
 			plate.widgets.WidgetTug = WidgetLib.CreateThreatLineWidget(plate)
 			plate.widgets.WidgetTug:SetPoint("CENTER", plate, 0, 18)
 		end
 	end
-	-- Combo Point Wheel
-	if LocalVars.WidgetCombo then
-		if not plate.widgets.WidgetCombo then 
-			plate.widgets.WidgetCombo = WidgetLib.CreateComboPointWidget(plate)
-			--plate.widgets.WidgetCombo:SetPoint("CENTER", plate, 25, 27)
-			plate.widgets.WidgetCombo:SetPoint("CENTER", plate, 0, 27)
-			plate.widgets.WidgetCombo:SetFrameLevel(plate:GetFrameLevel()+2)
-		end
-	end	
-	-- Target Selection Box
-	if LocalVars.WidgetSelect then
-		if not plate.widgets.WidgetSelect then 
-			plate.widgets.WidgetSelect = CreateTargetbox(plate)
-			plate.widgets.WidgetSelect:SetPoint("CENTER", 0, -5)
+	-- Threat Wheel
+	if LocalVars.WidgetWheel then
+		if not plate.widgets.WidgetWheel then 
+			plate.widgets.WidgetWheel = WidgetLib.CreateThreatWheelWidget(plate)
+			plate.widgets.WidgetWheel:SetPoint("CENTER", plate, 30, 18)
 		end
 	end
-	
+	-- Target Selection Box
+	if LocalVars.WidgetSelect then
+		if not plate.widgets.targetbox then 
+			plate.widgets.targetbox = CreateTargetbox(plate)
+			plate.widgets.targetbox:SetPoint("CENTER", 0, -5)
+		end
+	end
+	-- Tanked Icon
+	if LocalVars.WidgetTanked then
+		if not plate.widgets.WidgetTanked then
+			plate.widgets.WidgetTanked =  WidgetLib.CreateTankedWidget(plate)
+			plate.widgets.WidgetTanked:SetPoint("CENTER", plate, 37, 17)
+		end
+	end	
 	-- Short Debuffs
 	if LocalVars.WidgetDebuff then
 		if not plate.widgets.WidgetDebuff then 
@@ -123,17 +122,18 @@ local function OnInitializeDelegate(plate)
 			--plate.widgets.WidgetDebuff:SetScale(.85)
 		end
 	end
-	
 end
 
--- Update widgets
+
 local function OnUpdateDelegate(plate, unit)
 	-- Tug-o-Threat
 	if LocalVars.WidgetTug then plate.widgets.WidgetTug:Update(unit) end
-	-- Combo Point Wheel
-	if LocalVars.WidgetCombo then plate.widgets.WidgetCombo:Update(unit) end	
+	-- Threat Wheel
+	if LocalVars.WidgetWheel then plate.widgets.WidgetWheel:Update(unit) end
 	-- Target Selection Box
-	if LocalVars.WidgetSelect then plate.widgets.WidgetSelect:SetTarget(unit.isTarget) end
+	if LocalVars.WidgetSelect then plate.widgets.targetbox:SetTarget(unit.isTarget ) end
+	-- Tanked Icon
+	if LocalVars.WidgetTanked then plate.widgets.WidgetTanked:Update(unit) end	
 	-- Short Debuffs
 	if LocalVars.WidgetDebuff then plate.widgets.WidgetDebuff:Update(unit) end
 end
@@ -143,8 +143,8 @@ end
 ---------------
 theme.SetSpecialText = HealthTextDelegate
 theme.SetSpecialText2 = SpellTextDelegate
-theme.SetScale = DpsScale
-theme.SetAlpha = DpsAlpha
+theme.SetScale = TankScale
+theme.SetAlpha = TankAlpha
 theme.OnUpdate = OnUpdateDelegate
 theme.OnInitialize = OnInitializeDelegate
 theme.SetHealthbarColor = HealthColorDelegate
