@@ -215,6 +215,7 @@ do
 			if unitcache.isElite ~= unit.isElite then UpdateIndicator_EliteIcon() end
 			if (unitcache.red ~= unit.red) or (unitcache.green ~= unit.green) or (unitcache.blue ~= unit.blue) then
 				UpdateIndicator_UnitColor() end
+            UpdateIndicator_BoxIcon()
 		end
 	end
 	
@@ -874,9 +875,9 @@ do
 		
 		visual.highlight = regions.highlight
 		
-		-- visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
+		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
 		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
-		visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BossDebuffWidget\\Fire")
+		-- visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BossDebuffWidget\\Fire")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
 		OnNewNameplate(plate)
