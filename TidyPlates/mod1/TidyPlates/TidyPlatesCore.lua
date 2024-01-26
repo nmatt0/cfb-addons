@@ -77,7 +77,7 @@ do
 	local fontgroup = {"name", "level", "specialText", "specialText2"}
 	local anchorgroup = {"healthborder", "threatborder", "castborder", "castnostop",
 						"name",  "specialText", "specialText2", "level",
-						"specialArt", "spellicon", "raidicon", "dangerskull"}
+						"specialArt", "spellicon", "raidicon", "boxicon", "dangerskull"}
 	local bargroup = {"castbar", "healthbar"}
 	
 	-- UpdateStyle: 

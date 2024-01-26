@@ -149,6 +149,14 @@ theme.spellicon = {
 theme.raidicon = {
 	width = 20,
 	height = 20,
+	x = -35,
+	y = 12+nameplate_verticalOffset,
+	anchor = "TOP",
+}
+
+theme.boxicon = {
+	width = 20,
+	height = 20,
 	x = 35,
 	y = 12+nameplate_verticalOffset,
 	anchor = "TOP",
