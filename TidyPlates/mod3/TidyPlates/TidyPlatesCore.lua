@@ -10,6 +10,7 @@ local timeSlice = 0
 TidyPlates = {}
 
 local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}
+local team2 = {["Orgrimmar Grunt"]=true}
 
 local activetheme = {}
 local numChildren = -1
@@ -180,6 +181,11 @@ do
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
 		if team1[unit.name] then 
+            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
+			visual.boxicon:Show()
+		else visual.boxicon:Hide() end
+		if team2[unit.name] then 
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\Dog")
 			visual.boxicon:Show()
 		else visual.boxicon:Hide() end
 	end
@@ -867,7 +873,6 @@ do
 		visual.spellicon = castbar:CreateTexture(nil, "OVERLAY")
 		visual.dangerskull = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.raidicon = healthbar:CreateTexture(nil, "OVERLAY")
-		visual.boxicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.eliteicon = healthbar:CreateTexture(nil, "OVERLAY")
 		visual.name  = extended:CreateFontString(nil, "ARTWORK")
 		visual.level = extended:CreateFontString(nil, "OVERLAY")
@@ -875,10 +880,15 @@ do
 		visual.highlight = regions.highlight
 		
 		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
-		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
-		-- visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BossDebuffWidget\\Fire")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
+
+        -- Box
+		visual.boxicon = healthbar:CreateTexture(nil, "OVERLAY")
+
+		-- visual.team2icon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\dog")
+
+
 		OnNewNameplate(plate)
 		--SetSelfEcho(plate, OnNewNameplate)
 		
