@@ -183,8 +183,7 @@ do
 		if team1[unit.name] then 
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 			visual.boxicon:Show()
-		else visual.boxicon:Hide() end
-		if team2[unit.name] then 
+        elseif team2[unit.name] then 
             visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\Dog")
 			visual.boxicon:Show()
 		else visual.boxicon:Hide() end
