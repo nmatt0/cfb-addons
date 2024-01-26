@@ -138,6 +138,12 @@ do
 	-- UpdateIndicator_Name
 	function UpdateIndicator_Name() 
 		visual.name:SetText(unit.name)
+		if team1[unit.name] then
+            unit.boxicon = true
+        else
+            unit.boxicon = false
+        end
+        
 	end
 	
 	-- UpdateIndicator_Level
@@ -179,7 +185,7 @@ do
 
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
-		if team1[unit.name] then 
+		if unit.boxicon then 
 			visual.boxicon:Show()
 			visual.boxicon:SetTexCoord(regions.boxicon:GetTexCoord()) 
 		else visual.boxicon:Hide() end
@@ -622,16 +628,6 @@ do
 		UpdateIndicator_RaidIcon()
 	end
 	
-	-- OnUpdateBoxIcon
-	function OnUpdateBoxIcon(plate) 
-		if not IsPlateShown(plate) then return end
-		UpdateReferences(plate)
-		if regions.boxicon:IsShown() then 
-			unit.boxIcon = true
-		else unit.raidIcon = false end
-		UpdateIndicator_BoxIcon()
-	end
-	
 	-- OnUpdateReaction
 	function OnUpdateReaction(plate) 
 		if not IsPlateShown(plate) then return end
@@ -886,9 +882,8 @@ do
 		visual.highlight = regions.highlight
 		
 		visual.raidicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
-		-- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
+		visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		-- visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BossDebuffWidget\\Fire")
-		visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\Dog")
 		visual.dangerskull:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Skull")
 		
 		OnNewNameplate(plate)
