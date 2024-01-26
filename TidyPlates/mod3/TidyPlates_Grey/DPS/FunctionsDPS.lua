@@ -65,7 +65,7 @@ local function HealthColorDelegate(unit)
 				else return safe.r, safe.g, safe.b end 
 			end
 	end
-	return unit.red, unit.green, unit.blue
+	return 196, 30, 58
 end
 
 ---------------
