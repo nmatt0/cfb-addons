@@ -6,6 +6,7 @@
 ## SavedVariablesPerCharacter: TidyPlatesOptions
 
 widgets\Statusbar.lua
+TidyPlatesBoxData.lua
 TidyPlatesCore.lua
 TidyPlatesUtility.lua
 TidyPlatesDefaults.lua
