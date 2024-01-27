@@ -5,7 +5,6 @@
 ## Version: 5.13.3 (R39)
 ## SavedVariablesPerCharacter: TidyPlatesOptions
 
-BoxData.lua
 widgets\Statusbar.lua
 TidyPlatesCore.lua
 TidyPlatesUtility.lua
