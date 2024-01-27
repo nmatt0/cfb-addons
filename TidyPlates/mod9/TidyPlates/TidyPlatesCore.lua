@@ -191,12 +191,12 @@ do
 
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
-        for _, team in ipairs(boxdata) do
-            if team["members"][unit.name] then
-                visual.boxicon:SetTexture(team["icon"])
-                visual.boxicon:Show()
-            end
-        end
+        -- for _, team in ipairs(boxdata) do
+        --     if team["members"][unit.name] then
+        --         visual.boxicon:SetTexture(team["icon"])
+        --         visual.boxicon:Show()
+        --     end
+        -- end
 		-- if team1[unit.name] then 
         --     visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
 		-- 	visual.boxicon:Show()
