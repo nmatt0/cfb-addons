@@ -187,6 +187,7 @@ do
             if unit.name == "Orgrimmar Grunt" then
                 unit.name = raidIconMap[unit.raidIcon] .. " " .. unit.name
                 team1raidIcon = raidIconMap[unit.raidIcon]
+                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
             end
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
