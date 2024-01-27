@@ -205,7 +205,9 @@ do
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_3")
 			visual.boxicon:Show()
         elseif teamtest[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\" .. team1raidIcon)
+            if team1raidIcon then
+                visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\" .. team1raidIcon)
+            end
 			visual.boxicon:Show()
         elseif gantz[unit.name] then 
             visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\taco")
