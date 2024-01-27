@@ -184,7 +184,7 @@ do
 	-- UpdateIndicator_RaidIcon
 	function UpdateIndicator_RaidIcon() 
 		if unit.raidIcon then 
-            if unit.name == "Shabbat" then
+            if unit.name == "Orgrimmar Grunt" then
                 unit.name = raidIconMap[unit.raidIcon] .. " " .. unit.name
                 UpdateIndicator_Name()
             end
