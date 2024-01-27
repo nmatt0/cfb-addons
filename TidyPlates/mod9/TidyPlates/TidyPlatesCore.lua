@@ -9,9 +9,9 @@ local timeSlice = 0
 --------------------------------------------------------------------------------------------------------------
 TidyPlates = {}
 
-local getBoxData = getBoxData
+local GetBoxData = GetBoxData
 -- local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}
-local team1 = getBoxData()
+local team1 = GetBoxData()
 local team2 = {["Zahd"]=true,["Harz"]=true,["Grunbeld"]=true,["Undeth"]=true,["Delts"]=true}
 local team3 = {["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true}
 local teamtest = {["Orgrimmar Grunt"]=true}
