@@ -9,6 +9,8 @@ local timeSlice = 0
 --------------------------------------------------------------------------------------------------------------
 TidyPlates = {}
 
+local team1, team2, team3, teamtest, otto, elegant, gantz, wicked = GetBoxData()
+
 -- local team1 = {["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}
 -- local team2 = {["Zahd"]=true,["Harz"]=true,["Grunbeld"]=true,["Undeth"]=true,["Delts"]=true}
 -- local team3 = {["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true}
