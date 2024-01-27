@@ -210,7 +210,7 @@ do
             if team1raidIcon then
                 unit.name = team1raidIcon .. " " .. unit.name
                 UpdateIndicator_Name()
-                visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\" .. team1raidIcon)
+                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
 			    visual.boxicon:Show()
             end
         elseif gantz[unit.name] then 
