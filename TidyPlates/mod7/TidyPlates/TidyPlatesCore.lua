@@ -184,7 +184,7 @@ do
 	-- UpdateIndicator_RaidIcon
 	function UpdateIndicator_RaidIcon() 
 		if unit.raidIcon then 
-            if unit.name == "Orgrimmar Grunt" then
+            if unit.name == "Shabbat" then
                 -- unit.name = raidIconMap[unit.raidIcon] .. " " .. unit.name
                 team1raidIcon = raidIconMap[unit.raidIcon]
                 -- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
@@ -198,6 +198,12 @@ do
 	-- UpdateIndicator_BoxIcon
 	function UpdateIndicator_BoxIcon() 
 		if team1[unit.name] then 
+            if team1raidIcon then
+                unit.name = team1raidIcon .. " " .. unit.name
+                UpdateIndicator_Name()
+                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
+			    visual.boxicon:Show()
+            end
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
 			visual.boxicon:Show()
         elseif team2[unit.name] then 
@@ -207,12 +213,8 @@ do
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_3")
 			visual.boxicon:Show()
         elseif teamtest[unit.name] then 
-            if team1raidIcon then
-                unit.name = team1raidIcon .. " " .. unit.name
-                UpdateIndicator_Name()
-                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
+                visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_5")
 			    visual.boxicon:Show()
-            end
         elseif gantz[unit.name] then 
             visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\taco")
 			visual.boxicon:Show()
