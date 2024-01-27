@@ -186,7 +186,7 @@ do
 		if unit.raidIcon then 
             if unit.name == "Orgrimmar Grunt" then
                 unit.name = raidIconMap[unit.raidIcon] .. " " .. unit.name
-                UpdateIndicator_Name()
+                team1raidIcon = raidIconMap[unit.raidIcon]
             end
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
@@ -205,7 +205,7 @@ do
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_3")
 			visual.boxicon:Show()
         elseif teamtest[unit.name] then 
-            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\elegant")
+            visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\" .. team1raidIcon)
 			visual.boxicon:Show()
         elseif gantz[unit.name] then 
             visual.boxicon:SetTexture("Interface\\Addons\\TidyPlates\\Widgets\\BoxWidget\\taco")
