@@ -193,8 +193,6 @@ do
 	function UpdateIndicator_BoxIcon() 
         for _, team in ipairs(boxdata) do
             if team["members"][unit.name] then
-                unit.name = team["members"]
-                visual.name:SetText(unit.name)
                 visual.boxicon:SetTexture(team["icon"])
                 visual.boxicon:Show()
             end
