@@ -188,6 +188,7 @@ do
                 unit.name = raidIconMap[unit.raidIcon] .. " " .. unit.name
                 team1raidIcon = raidIconMap[unit.raidIcon]
                 visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
+                visual.boxicon:Show()
             end
 			visual.raidicon:Show()
 			visual.raidicon:SetTexCoord(regions.raidicon:GetTexCoord()) 
