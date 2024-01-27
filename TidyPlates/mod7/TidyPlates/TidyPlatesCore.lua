@@ -204,8 +204,8 @@ do
                 visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_" .. team1raidIcon)
 			    visual.boxicon:Show()
             end
-            visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
-			visual.boxicon:Show()
+            -- visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
+			-- visual.boxicon:Show()
         elseif team2[unit.name] then 
             visual.boxicon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_2")
 			visual.boxicon:Show()
