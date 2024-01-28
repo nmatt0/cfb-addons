@@ -19,7 +19,7 @@ local team_test = {["icon"]=icon_skull,["members"]={["Orgrimmar Grunt"]=true}}
 local team_shabbat = {["icon"]=icon_circle,["members"]={["Shabbat"]=true,["Shabbatalpha"]=true,["Shabbatbeta"]=true,["Shabbatgamma"]=true,["Shabbatomega"]=true}}
 
 local team_zahd = {["icon"]=icon_skull,["members"]={["Zahd"]=true,["Harz"]=true,["Grunbeld"]=true,["Undeth"]=true,["Delts"]=true}}
-local team_respektus = {["icon"]=icon_diamond,["members"]={["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true}}
+local team_respektus = {["icon"]=icon_diamond,["members"]={["Respektus"]=true,["Considerus"]=true,["Kneeltous"]=true,["Surenderto"]=true,["Praiseus"]=true,["Ikillbiches"]=true,["Cabradocrlho"]=true}}
 
 local team_otto = {["icon"]=icon_cow,["members"]={["Ottomanzz"]=true,["Ottomanl"]=true,["Ottomanm"]=true,["Ottomano"]=true,["Ottomanp"]=true}}
 local elegant = {["icon"]=icon_elegant,["members"]={["Elegant"]=true,["Eleganto"]=true,["Elegantz"]=true,["Eleganti"]=true,["Elegants"]=true,["Elegantb"]=true,["Elegantc"]=true,["Elegantd"]=true,["Eleganta"]=true}}
